@@ -1,0 +1,29 @@
+{
+  "name": "backend-project-break",
+  "version": "1.0.0",
+  "description": "backend-project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch app.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LuisCar09/backend-project-break.git"
+  },
+  "keywords": [
+    "Node",
+    "Firebase",
+    "mongoDB",
+    "Mogoose",
+    "Auth",
+    "JWT"
+  ],
+  "author": "Luis Carlos Bravo <luiscbravo94@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuisCar09/backend-project-break/issues"
+  },
+  "homepage": "https://github.com/LuisCar09/backend-project-break#readme"
+}
