@@ -4,7 +4,7 @@
 // - updateProduct: Actualiza un producto. Una vez actualizado, redirige a la vista de detalle del producto o a la vista de todos los productos del dashboard.
 // - deleteProduct: Elimina un producto. Una vez eliminado, redirige a la vista de todos los productos del dashboard.
 
-const DashboardControllers = {
+const authDashboardControllers = {
     showNewProduct :async(req,res) => {
         res.send('<h1>Luis le Grand Dashboard</h1>')
     },
@@ -22,4 +22,4 @@ const DashboardControllers = {
     }
 }
 
-module.exports = DashboardControllers
+module.exports = authDashboardControllers
