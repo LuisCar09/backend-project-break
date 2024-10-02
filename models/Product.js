@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const ProductSchema  = new mongoose.Schema({
-    nombre :{
+    name :{
         type:String,
         required : true
     },
@@ -15,7 +15,7 @@ const ProductSchema  = new mongoose.Schema({
             message : 'Description must have between 15 and 300 characters'
         }
     },
-    imagen : {
+    image : {
         type : String,
         required : true,
         validate:{
@@ -26,7 +26,7 @@ const ProductSchema  = new mongoose.Schema({
             message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
         }
     },
-    categoria :{
+    category :{
         type : String,
         required : true,
         enum: {
@@ -34,7 +34,7 @@ const ProductSchema  = new mongoose.Schema({
             message: '{VALUE} is not a valid product'
         }
     },
-    talla: {
+    size: {
         type: String,
         required: true,
         enum:{
@@ -42,7 +42,7 @@ const ProductSchema  = new mongoose.Schema({
             message: '{VALUE} is not a valid size'
         }
     },
-    precio:{
+    price:{
         type: Number,
         required : true,
         min:[0,'The price must be greater than 0'] //minimum price zero
