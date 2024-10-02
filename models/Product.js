@@ -20,7 +20,7 @@ const ProductSchema  = new mongoose.Schema({
         required : true,
         validate:{
             validator: function(v) {
-                const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i //regres to validate image url
+                const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i //regrex to validate image url
                 return imagePattern.test(v)
             },
             message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
