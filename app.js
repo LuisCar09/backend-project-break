@@ -3,6 +3,7 @@ const app = express()
 const dotenv = require('dotenv')
 const path = require('path')
 const productRoutes= require('./routes/productRoutes')
+
 const dbConnection = require('./config/db')
 dotenv.config()
 const PORT = process.env.PORT ?? 4500
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));
 
 app.use('/products',productRoutes)
+//app.use('/dashboard',)
 
 dbConnection()
 app.listen(PORT,()=>{
