@@ -1,8 +1,9 @@
+
 const ProductsControllers = {
-    products : async (req,res)=> {
+    showProducts : async (req,res)=> {
         res.send('<h1>Luis le Grand Products</h1>')
     },
-    product : async(req,res) => {
+    showProductById : async(req,res) => {
         res.send('<h1>Luis le Grand Product</h1>')
     }
 }
