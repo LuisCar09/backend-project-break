@@ -1,23 +1,5 @@
 const mongoose = require('mongoose')
 
-
-
-// ## Creación de modelo
-
-// Vamos a crear el modelo de producto. El modelo de producto tendrá los siguientes campos:
-
-// - Nombre
-// - Descripción
-// - Imagen
-// - Categoría
-// - Talla
-// - Precio
-
-// La categoría será un string que podrá ser "Camisetas", "Pantalones", "Zapatos", "Accesorios".
-
-// La talla será un string que podrá ser "XS", "S", "M", "L", "XL".
-
-
 const ProductSchema  = new mongoose.Schema({
     nombre :{
         type:String,
@@ -63,7 +45,7 @@ const ProductSchema  = new mongoose.Schema({
     precio:{
         type: Number,
         required : true,
-        min:[0,'The price must be greater than 0'] //validated if price is greater than zero
+        min:[0,'The price must be greater than 0'] //minimum price zero
     },
     stock:{
         type : Number,
