@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended:true}));
 //Read static files
 app.use(express.static(path.join(__dirname,"public")));
 
-app.use('/products',productRoutes)
+app.use('/',productRoutes)
 app.use('/dashboard',dashboardRouters)
 
 dbConnection()
