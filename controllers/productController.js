@@ -12,12 +12,12 @@ const showProducts = (navbar, products) => {
                 <title>Web Store</title>
             </head>
             <body>
-                <main id="main-container">
+                <main id="main-container" class='main-container'>
                     <header id="header-top" class='header-top'>
                         ${navbar}
                         
                     </header>
-                    <article id="products-container">
+                    <article id="products-container" class='products-container' >
                        ${products}
                     </article>
                 </main>
@@ -27,7 +27,7 @@ const showProducts = (navbar, products) => {
             `
 }
 
-const products = [{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2}]
+const products = [{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2}]
 const ProductsControllers = {
     showProducts : async (req,res)=> {
         

@@ -21,7 +21,7 @@ const renderProducts = (products) => {
 const navbar = () =>  {
     const categories =  ["Camisetas", "Pantalones", "Zapatos", "Accesorios",];
     const listItems = categories.map(cat => {
-        return `<li>${cat}</li>`
+        return `<li><a href='/?category=${cat}'>${cat}</a></li>`
     }).join('')
 
     const html = 
