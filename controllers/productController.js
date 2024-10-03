@@ -1,7 +1,9 @@
 
+const path = require('path')
 const ProductsControllers = {
     showProducts : async (req,res)=> {
-        res.send('<h1>Luis le Grand Products</h1>')
+
+        res.sendFile(path.join(__dirname,'../public/views','index.html'))
     },
     showProductById : async(req,res) => {
         res.send('<h1>Luis le Grand Product</h1>')
