@@ -22,7 +22,7 @@ const navbar = () =>  {
     const categories =  ["Camisetas", "Pantalones", "Zapatos", "Accesorios",];
     const listItems = categories.map(cat => {
         return `<li>${cat}</li>`
-    }).join()
+    }).join('')
 
     const html = 
     `

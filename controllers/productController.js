@@ -8,11 +8,12 @@ const showProducts = (navbar, products) => {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="styles/styles.css">
                 <title>Web Store</title>
             </head>
             <body>
                 <main id="main-container">
-                    <header id="header-top">
+                    <header id="header-top" class='header-top'>
                         ${navbar}
                         
                     </header>
