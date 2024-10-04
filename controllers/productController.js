@@ -8,7 +8,7 @@ const showProducts = (navbar, products) => {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="styles/styles.css">
+                <link rel="stylesheet" href="/styles/styles.css">
                 <title>Web Store</title>
             </head>
             <body>
@@ -27,17 +27,26 @@ const showProducts = (navbar, products) => {
             `
 }
 
-const products = [{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'SUPER',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2}]
+const products = [{name:'Camisetas',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'Pantalones',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:3},{name:'Zapatos',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:4},{name:'Accesorios',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:1},{name:'Camisetas',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:6},{name:'Pantalones',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:7}]
+
 const ProductsControllers = {
     showProducts : async (req,res)=> {
+        const name = req.query.category
         
-        const html = showProducts(navbar(),renderProducts(products),)
+        const html = name ? showProducts(navbar(),renderProducts(products.filter(product => product.name === name))) : showProducts(navbar(),renderProducts(products))
         
         res.send(html)
-        //res.sendFile(path.join(__dirname,'../public/views','index.html'))
+        
+        
     },
     showProductById : async(req,res) => {
-        res.send('<h1>Luis le Grand Product</h1>')
+        const productId = parseInt(req.params.productId)
+       
+        const arrayFiltered = products.filter(product => product._id === productId)
+        
+        const html = showProducts(navbar(),renderProducts(arrayFiltered))
+        
+        res.send(html)
     }
 }
 

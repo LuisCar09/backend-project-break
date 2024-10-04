@@ -7,7 +7,7 @@ const renderProducts = (products) => {
                 <div>
                     <img src="${product.image}" alt="{product.name}">
                 </div>
-                <a href="/product/:${product._id}">
+                <a href="/product/${product._id}">
                     <button>Ver</button>
                 </a>
         </div>

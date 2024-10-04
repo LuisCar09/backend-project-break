@@ -7,7 +7,7 @@ const ProductsControllers  = require('../controllers/productController')
 
 router.get('/',ProductsControllers.showProducts)
 
-router.get('/products/:productId',ProductsControllers.showProductById)
+router.get('/product/:productId',ProductsControllers.showProductById)
 
 router.use((req,res)=>{
     res.send('<h1>Page not found</h1>')
