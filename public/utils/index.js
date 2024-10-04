@@ -28,7 +28,7 @@ const navbar = () =>  {
     `
     <navbar>
             <div>
-                <a href="/products">Productos</a>
+                <a href="/">Productos</a>
             </div>
             <ul>
                ${listItems} 
