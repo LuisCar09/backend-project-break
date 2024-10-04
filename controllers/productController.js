@@ -28,26 +28,33 @@ const showProducts = (navbar, products) => {
             `
 }
 
-const products = [{name:'Camisetas',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:2},{name:'Pantalones',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:3},{name:'Zapatos',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:4},{name:'Accesorios',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:1},{name:'Camisetas',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:6},{name:'Pantalones',image:'https://1000marcas.net/wp-content/uploads/2019/11/Logo-Nike-1.png',_id:7}]
+
 
 const ProductsControllers = {
     showProducts : async (req,res)=> {
-        const name = req.query.category
-        
-        const html = name ? showProducts(navbar(),renderProducts(products.filter(product => product.name === name))) : showProducts(navbar(),renderProducts(products))
-        
-        res.send(html)
-        
-        
+        const category = req.query.category
+        try {
+            const products = await Product.find();
+            const html = category ? showProducts(navbar(),renderProducts(products.filter(product => product.category === category))) : showProducts(navbar(),renderProducts(products))
+            
+            res.send(html)
+        } catch (error) {
+            res.status(500).json({'There was a problem creating a product': error.message})
+                        
+        }
+ 
     },
     showProductById : async(req,res) => {
-        const productId = parseInt(req.params.productId)
+        const id = req.params.productId
+        console.log(id);
+        try {
+            const product = await Product.findById(id)
+            const html = showProducts(navbar(),renderProducts([product]))
+            res.send(html)
+        } catch (error) {
+            res.status(500).json({'There was a problem creating a product': error.message})
+        }
        
-        const arrayFiltered = products.filter(product => product._id === productId)
-        
-        const html = showProducts(navbar(),renderProducts(arrayFiltered))
-        
-        res.send(html)
     },
     createProduct : async(req,res) => {
     
