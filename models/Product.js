@@ -38,7 +38,7 @@ const ProductSchema  = new mongoose.Schema({
         type: String,
         required: true,
         enum:{
-            values : ["S","M","L","XL","XXL"],
+            values : ["S","M","L","XL","XXL","32","34","36","38","40","42"],
             message: '{VALUE} is not a valid size'
         }
     },

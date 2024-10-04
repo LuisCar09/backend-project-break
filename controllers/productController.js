@@ -1,5 +1,6 @@
 
 const path = require('path')
+const Product = require('../models/Product')
 const { renderProducts, navbar } = require('../public/utils/index')
 
 const showProducts = (navbar, products) => {
@@ -47,6 +48,18 @@ const ProductsControllers = {
         const html = showProducts(navbar(),renderProducts(arrayFiltered))
         
         res.send(html)
+    },
+    createProduct : async(req,res) => {
+    
+        try {
+            const productFeatures = req.body
+            const productCreated = await Product.create(productFeatures)
+            res.status(200).json(productCreated)
+        } catch (error) {
+            res.status(500).json({'There was a problem creating a product': error.message})
+            
+            
+        }
     }
 }
 
