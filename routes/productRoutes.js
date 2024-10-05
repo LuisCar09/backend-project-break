@@ -9,7 +9,7 @@ router.get('/',ProductsControllers.showProducts)
 
 router.get('/product/:productId',ProductsControllers.showProductById)
 
-router.post('/dashboard',ProductsControllers.createProduct)
+//router.post('/dashboard',ProductsControllers.createProduct)
 
 
 

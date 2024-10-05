@@ -114,13 +114,69 @@ const showProducts = (navbar, products) => {
 const comesFromDashboard = (path)=>{
     return path === 'dashboard' ? true : false
 }
+const form = (method)=> {
+    const isPost = method === 'POST' ? true : false
+    html = `
+    <form action="" method="${method}">
+        <label for="name">Nombre:</label>
+        <input id="name" name ='name' placeholder="Nombre del producto" type="text" required>
 
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description" placeholder="Descripcion del producto" required></textarea>
+
+        <label for="price">Precio:</label>
+        <input id="price" name ='price' placeholder="10" type="number" required>
+        
+        <label for="image">Imagen:</label>
+        <input type="text" id="imagen" name="imagen" >
+        
+
+        <label for="category">Categoría:</label>
+        <select name="category" id="category" required>
+            <optgroup label="Categories">
+                <option value="">Selecciona una categoría</option>
+                <option value="Camisetas">Camisetas</option>
+                <option value="Pantalones">Pantalones</option>
+                <option value="Zapatos">Zapatos</option>
+                <option value="Accesorios">Accesorios</option>
+            </optgroup>
+        </select>
+        
+        <label for="size">Talla:</label>
+        <select name="size" id="size" required>
+            <optgroup label="Sizes">
+                <option value="">Selecciona una talla</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="32">32</option>
+                <option value="34">34</option>
+                <option value="36">36</option>
+                <option value="38">38</option>
+                <option value="40">40</option>
+                <option value="42">42</option>
+            </optgroup>
+        </select>
+        
+
+        
+
+        ${isPost ? '<button type="submit">Crear</button>' : '<button type="submit">Guardar</button> <a href="/dasboard"> <button>Cerrar</button> </a>' }
+
+    </form>
+    `
+    return html
+    
+}
 
 module.exports = {
     renderProducts,
     navbar,
     itemCart,
     showProducts,
-    comesFromDashboard
+    comesFromDashboard,
+    form
 
 }

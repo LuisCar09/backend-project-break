@@ -147,3 +147,22 @@ html{
     transform: scale(1.02);
     transition: all .2s linear;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 35rem;
+    width: 100%;
+    
+}
+form input,form label,form textarea,form select{
+    margin-bottom: 2rem;
+    
+}
+form label,form button{
+    margin-bottom: 1rem;
+    
+}
+form button{
+    width: 100%;
+    
+}
