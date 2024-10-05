@@ -1,4 +1,4 @@
-const renderProducts = (products) => {
+const renderProducts = (products,isFromDashboard) => {
     
     const html = products.map(product => {
         return `
@@ -7,7 +7,8 @@ const renderProducts = (products) => {
                 <div>
                     <img src="${product.image}" alt="{product.name}">
                 </div>
-                <a href="/product/${product._id}">
+
+                <a href="${!isFromDashboard ? `/product/${product._id}` : `/dashboard/${product._id}`}">
                     <button>Ver</button>
                 </a>
         </div>
@@ -18,10 +19,12 @@ const renderProducts = (products) => {
 
 
 }
-const navbar = () =>  {
-    const categories =  ["Camisetas", "Pantalones", "Zapatos", "Accesorios",];
+const navbar = (isFromDashboard) =>  {
+    const categories =  ["Camisetas", "Pantalones", "Zapatos", "Accesorios"];
+    
     const listItems = categories.map(cat => {
-        return `<li><a href='/?category=${cat}'>${cat}</a></li>`
+        
+        return `<li><a href='${!isFromDashboard ? `/?category=${cat}`: `/dashboard/?category=${cat} ` }' > ${cat}</a></li>`
     }).join('')
 
     const html = 

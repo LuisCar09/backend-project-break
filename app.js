@@ -16,6 +16,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));
 
 app.use('/',productRoutes)
+
 app.use('/dashboard',dashboardRouters)
 
 app.use((req,res)=>{

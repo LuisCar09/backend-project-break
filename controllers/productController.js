@@ -33,9 +33,13 @@ const showProducts = (navbar, products) => {
 const ProductsControllers = {
     showProducts : async (req,res)=> {
         const category = req.query.category
+        const path = req.originalUrl.split('/').find(e => e === 'dashboard')
+        const isFromDashboard = path === 'dashboard' ? true : false
+        
+        
         try {
             const products = await Product.find();
-            const html = category ? showProducts(navbar(),renderProducts(products.filter(product => product.category === category))) : showProducts(navbar(),renderProducts(products))
+            const html = category ? showProducts(navbar(isFromDashboard),renderProducts(products.filter(product => product.category === category),isFromDashboard)) : showProducts(navbar(isFromDashboard),renderProducts(products,isFromDashboard))
             
             res.send(html)
         } catch (error) {
