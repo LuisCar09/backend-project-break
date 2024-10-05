@@ -46,7 +46,7 @@ const ProductsControllers = {
     },
     showProductById : async(req,res) => {
         const id = req.params.productId
-        console.log(id);
+        
         try {
             const product = await Product.findById(id)
             const html = showProducts(navbar(),renderProducts([product]))

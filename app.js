@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use('/',productRoutes)
 app.use('/dashboard',dashboardRouters)
 
+app.use((req,res)=>{
+    res.send('<h1>Page not found</h1>')
+})
 dbConnection()
 app.listen(PORT,()=>{
     console.log(`Server listening on port http://127.0.0.1:${PORT}`);

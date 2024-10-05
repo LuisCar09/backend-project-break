@@ -11,8 +11,6 @@ router.get('/product/:productId',ProductsControllers.showProductById)
 
 router.post('/dashboard',ProductsControllers.createProduct)
 
-router.use((req,res)=>{
-    res.send('<h1>Page not found</h1>')
-})
+
 
 module.exports = router
