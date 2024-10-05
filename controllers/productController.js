@@ -1,36 +1,9 @@
 
 const path = require('path')
 const Product = require('../models/Product')
-const { renderProducts, navbar,itemCart } = require('../public/utils/index')
+const { renderProducts, navbar,itemCart,showProducts,comesFromDashboard } = require('../public/utils/index')
 
-const showProducts = (navbar, products) => {
-    return `<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="/styles/styles.css">
-                <title>Web Store</title>
-            </head>
-            <body>
-                <main id="main-container" class='main-container'>
-                    <header id="header-top" class='header-top'>
-                        ${navbar}
-                        
-                    </header>
-                    <article id="products-container" class='products-container' >
-                       ${products}
-                    </article>
-                </main>
-                <script src="../utils/index.js"></script>
-            </body>
-            </html>
-            `
-}
 
-const comesFromDashboard = (path)=>{
-    return path === 'dashboard' ? true : false
-}
 
 const ProductsControllers = {
     showProducts : async (req,res)=> {
