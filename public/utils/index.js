@@ -17,8 +17,51 @@ const renderProducts = (products,isFromDashboard) => {
 
     return html
 
-
 }
+const showButtons = (dashboard,_id) => {
+    if(!dashboard){
+        return ''
+    }
+    return `
+    <a href="/dashboard/:${_id}/edit"><button type="button">Editar</button></a>
+    <a href="/dashboard/:${_id}/delete"><button type="button">Borrar</button></a>
+`
+}
+
+const itemCart = (products,dashboard) => {
+    
+    
+    const html = products.map(product => {
+        return `
+        <div class="product">
+                <h2>${product.name}</h2>
+                <div>
+                    <img src="${product.image}" alt="{product.name}">
+                </div>
+
+                <p>
+                Descripcion:${product.description}
+                </p>
+                <p>
+                Precio:${product.description}
+                </p>
+                <p>
+                Categoria:${product.category}
+                </p>
+                <p>
+                Talla:${product.size}
+                </p>
+
+                
+            ${showButtons(dashboard,product._id)}    
+                
+        </div>
+        `
+    }).join('')
+
+    return html
+}
+
 const navbar = (isFromDashboard) =>  {
     const categories =  ["Camisetas", "Pantalones", "Zapatos", "Accesorios"];
     
@@ -47,6 +90,7 @@ const navbar = (isFromDashboard) =>  {
 
 module.exports = {
     renderProducts,
-    navbar
+    navbar,
+    itemCart
 
 }

@@ -1,7 +1,7 @@
 
 const path = require('path')
 const Product = require('../models/Product')
-const { renderProducts, navbar } = require('../public/utils/index')
+const { renderProducts, navbar,itemCart } = require('../public/utils/index')
 
 const showProducts = (navbar, products) => {
     return `<!DOCTYPE html>
@@ -51,13 +51,15 @@ const ProductsControllers = {
  
     },
     showProductById : async(req,res) => {
+        
+        
         const id = req.params.productId
         const path = req.originalUrl.split('/').find(e => e === 'dashboard')
         const isFromDashboard = comesFromDashboard(path)
         
         try {
             const product = await Product.findById(id)
-            const html = showProducts(navbar(isFromDashboard),renderProducts([product],isFromDashboard))
+            const html = showProducts(navbar(isFromDashboard),itemCart([product],isFromDashboard))
             res.send(html)
         } catch (error) {
             res.status(500).json({'There was a problem creating a product': error.message})
