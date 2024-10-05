@@ -28,13 +28,15 @@ const showProducts = (navbar, products) => {
             `
 }
 
-
+const comesFromDashboard = (path)=>{
+    return path === 'dashboard' ? true : false
+}
 
 const ProductsControllers = {
     showProducts : async (req,res)=> {
         const category = req.query.category
         const path = req.originalUrl.split('/').find(e => e === 'dashboard')
-        const isFromDashboard = path === 'dashboard' ? true : false
+        const isFromDashboard = comesFromDashboard(path)
         
         
         try {
@@ -50,10 +52,12 @@ const ProductsControllers = {
     },
     showProductById : async(req,res) => {
         const id = req.params.productId
+        const path = req.originalUrl.split('/').find(e => e === 'dashboard')
+        const isFromDashboard = comesFromDashboard(path)
         
         try {
             const product = await Product.findById(id)
-            const html = showProducts(navbar(),renderProducts([product]))
+            const html = showProducts(navbar(isFromDashboard),renderProducts([product],isFromDashboard))
             res.send(html)
         } catch (error) {
             res.status(500).json({'There was a problem creating a product': error.message})

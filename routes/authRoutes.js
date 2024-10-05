@@ -15,7 +15,7 @@ router.get('/dashboard/new:',authControllers.showNewProduct)
 
 
 // - GET /dashboard/:productId: Devuelve el detalle de un producto en el dashboard.
-router.get('/dashboard/:productId')
+router.get('/:productId',ProductsControllers.showProductById)
 
 // - PUT /dashboard/:productId: Actualiza un producto.
 router.put('/dashboard/:productId:',authControllers.updateProduct)
