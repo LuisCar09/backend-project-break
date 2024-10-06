@@ -8,8 +8,7 @@ const { renderProducts, navbar,itemCart,showProducts,comesFromDashboard } = requ
 const ProductsControllers = {
     showProducts : async (req,res)=> {
         const category = req.query.category
-        const path = req.originalUrl.split('/').find(e => e === 'dashboard')
-        const isFromDashboard = comesFromDashboard(path)
+        const isFromDashboard = comesFromDashboard(req.originalUrl,'dashboard')
         
         
         try {
@@ -26,12 +25,11 @@ const ProductsControllers = {
     showProductById : async(req,res) => {
         
         
-        const id = req.params.productId
-        const path = req.originalUrl.split('/').find(e => e === 'dashboard')
-        const isFromDashboard = comesFromDashboard(path)
+        const productId = req.params.productId
+        const isFromDashboard = comesFromDashboard(req.originalUrl,'dashboard')
         
         try {
-            const product = await Product.findById(id)
+            const product = await Product.findById(productId)
             const html = showProducts(navbar(isFromDashboard),itemCart([product],isFromDashboard))
             res.send(html)
         } catch (error) {

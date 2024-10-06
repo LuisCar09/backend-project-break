@@ -5,9 +5,13 @@
 // - deleteProduct: Elimina un producto. Una vez eliminado, redirige a la vista de todos los productos del dashboard.
 const { renderProducts, navbar,itemCart,showProducts,comesFromDashboard,form } = require('../public/utils/index')
 const Product = require('../models/Product')
+
+
 const authDashboardControllers = {
     showNewProduct :async(req,res) => {
-        const template = showProducts(navbar(),form('POST'))
+        const isFromDashboard = comesFromDashboard(req.originalUrl,'dashboard')
+        
+        const template = showProducts(navbar(isFromDashboard),form('POST'))
         res.send(template)
     },
     createProduct : async(req,res) => {
@@ -28,15 +32,9 @@ const authDashboardControllers = {
     showEditProduct :async(req,res) => {
         
         const productId = req.params.productId
-        const pathOriginal = req.originalUrl.split('/').find(e => e === 'dashboard')
-        const isFromDashboard = comesFromDashboard(pathOriginal)
-        
-        
-        
-        
+        const isFromDashboard = comesFromDashboard(req.originalUrl,'dashboard')
         try {
             const product = await Product.findById(productId)
-            
             const template = showProducts(navbar(isFromDashboard),form('PUT',product))
             res.send(template)
         } catch (error) {

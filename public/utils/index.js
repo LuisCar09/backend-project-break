@@ -111,8 +111,9 @@ const showProducts = (navbar, products) => {
             `
 }
 
-const comesFromDashboard = (path)=>{
-    return path === 'dashboard' ? true : false
+const comesFromDashboard = (path,findPath)=>{
+    const isFromDashboard = path.split('/').find(e => e === findPath)
+    return isFromDashboard ? true : false
 }
 const form = (method,editProps)=> {
     const isPost = method === 'POST' ? true : false
