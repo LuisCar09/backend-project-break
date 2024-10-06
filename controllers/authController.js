@@ -41,7 +41,7 @@ const authDashboardControllers = {
     updateProduct :async(req,res) => {
         console.log(req.body);
         
-        res.send('<h1>Luis le Grand Dashboard</h1>')
+        res.status(200).json({success: 'successfully'})
     },
     deleteProduct :async(req,res) => {
         res.send('<h1>Luis le Grand Dashboard</h1>')

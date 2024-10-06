@@ -116,9 +116,23 @@ const comesFromDashboard = (path,findPath)=>{
     const isFromDashboard = path.split('/').find(e => e === findPath)
     return isFromDashboard ? true : false
 }
+
+const renderOptions = (existProps,arrValues, productType) => {
+    return existProps ? arrValues.map(value => {
+    return value.toLowerCase() !== productType.toLowerCase() ? `<option value="${value}">${value}</option>` : `<option value="${value}" selected>${value}</option>`
+    }).join('') 
+    : arrValues.map(value => {
+    return `<option value="${value}">${value}</option>` 
+    }).join('')
+}
 const form = (method,editProps)=> {
     const isPost = method === 'POST' ? true : false
     const existProps = editProps ? true : false
+    const sizeValues = ["S", "M", "L", "XL", "XXL", "32", "34", "36", "38", "40", "42"];
+    const categoryValues = ["Camisetas", "Pantalones", "Zapatos", "Accesorios"];
+    const sizeOptions = !existProps ? renderOptions(existProps,sizeValues) :renderOptions(existProps,sizeValues,editProps.size )
+    const categoryOptions =  !existProps ? renderOptions(existProps,categoryValues) : renderOptions(existProps,categoryValues,editProps.category)
+    
     html = `
     <form action="${isPost ? '/dashboard/new' : ''}" method="${!isPost ? 'PUT':'POST'}">
         <label for="name">Nombre:</label>
@@ -135,57 +149,70 @@ const form = (method,editProps)=> {
         
 
         <label for="category">Categoría:</label>
-        <select name="category" id="category" required >
+        <select name="category" id="category" required value='${existProps ? editProps.category : ''}' >
             <optgroup label="Categories">
                 <option value="">Selecciona una categoría</option>
-                <option value="Camisetas">Camisetas</option>
-                <option value="Pantalones">Pantalones</option>
-                <option value="Zapatos">Zapatos</option>
-                <option value="Accesorios">Accesorios</option>
+                ${categoryOptions}
             </optgroup>
         </select>
         
         <label for="size">Talla:</label>
-        <select name="size" id="size" required >
+        <select name="size" id="size" required required value='${existProps ? editProps.size : ''}' >
+
             <optgroup label="Sizes">
+            
                 <option value="">Selecciona una talla</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-                <option value="32">32</option>
-                <option value="34">34</option>
-                <option value="36">36</option>
-                <option value="38">38</option>
-                <option value="40">40</option>
-                <option value="42">42</option>
+                ${sizeOptions}
             </optgroup>
         </select>
-        
 
-        
-
-        ${isPost ? '<button type="submit">Crear</button>' : '<button type="text" id="saveButton" onClick= "putFunction()" >Guardar</button> <a href="/dasboard"> <button>Cerrar</button> </a>' }
+        ${isPost ? 
+        '<button type="submit">Crear</button>' 
+        : `<button type="button" id="saveButton" onClick="putFunction('${editProps.id}')"> Guardar </button>   <a href="/dasboard"><button type="button" >Cerrar</button> </a>` }
 
     </form>
     `
     return html
     
 }
-const putFunction = () => {
+const putFunction = async (idProduct) => {
     const name = document.getElementById('name').value
     const description = document.getElementById('description').value
     const price = document.getElementById('price').value
     const image = document.getElementById('image').value
+    const category = document.getElementById('category').value
+    const size = document.getElementById('size').value
     
-    console.log(name,description,price,image);
     
+    
+    try {
+        const response = await fetch('/dashboard/:productId',{
+            method: 'PUT',
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify({
+                name,
+                description,
+                price,
+                image,
+                category,
+                size
+            })
+        })
+        const data = await response.json()
+
+        if (data.success) {
+            window.location.href = '/dashboard'
+             
+             
+        }
+        
+    } catch (error) {
+        window.location.href = `/dashboard/${idProduct}/edit`
+        console.log('There was a problem sending value to server',error.message)
+    }
 }
-
-// const saveButton = document.getElementById('saveButton')
-// saveButton.addEventListener('click',putFunction)
-
 
 module.exports = {
     renderProducts,
