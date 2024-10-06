@@ -10,7 +10,7 @@ const Product = require('../models/Product')
 const authDashboardControllers = {
     showNewProduct :async(req,res) => {
         const isFromDashboard = comesFromDashboard(req.originalUrl,'dashboard')
-        
+
         const template = showProducts(navbar(isFromDashboard),form('POST'))
         res.send(template)
     },
@@ -18,9 +18,6 @@ const authDashboardControllers = {
     
         try {
             const productFeatures = req.body
-            console.log(productFeatures);
-            
-            
             const productCreated = await Product.create(productFeatures)
             res.status(200).json(productCreated)
         } catch (error) {
@@ -42,6 +39,8 @@ const authDashboardControllers = {
         }
     },
     updateProduct :async(req,res) => {
+        console.log(req.body);
+        
         res.send('<h1>Luis le Grand Dashboard</h1>')
     },
     deleteProduct :async(req,res) => {

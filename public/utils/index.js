@@ -105,8 +105,9 @@ const showProducts = (navbar, products) => {
                        ${products}
                     </article>
                 </main>
-                <script src="../utils/index.js"></script>
+                <script src="/utils/index.js"></script>
             </body>
+            
             </html>
             `
 }
@@ -119,7 +120,7 @@ const form = (method,editProps)=> {
     const isPost = method === 'POST' ? true : false
     const existProps = editProps ? true : false
     html = `
-    <form action="${isPost ? '/dashboard/new' : '/dashboard/:productId'}" method="${!method ? 'PUT':'POST'}">
+    <form action="${isPost ? '/dashboard/new' : ''}" method="${!isPost ? 'PUT':'POST'}">
         <label for="name">Nombre:</label>
         <input id="name" name ='name' placeholder="Nombre del producto" type="text" required value='${existProps ? editProps.name : ''}'>
 
@@ -130,7 +131,7 @@ const form = (method,editProps)=> {
         <input id="price" name ='price' placeholder="10" type="number" required value='${existProps ? editProps.price : ''}'>
         
         <label for="image">Imagen:</label>
-        <input type="text" id="imagen" name="image" value='${existProps ? editProps.image : ''}'>
+        <input type="text" id="image" name="image" value='${existProps ? editProps.image : ''}'>
         
 
         <label for="category">Categoría:</label>
@@ -165,13 +166,26 @@ const form = (method,editProps)=> {
 
         
 
-        ${isPost ? '<button type="submit">Crear</button>' : '<button type="submit">Guardar</button> <a href="/dasboard"> <button>Cerrar</button> </a>' }
+        ${isPost ? '<button type="submit">Crear</button>' : '<button type="text" id="saveButton" onClick= "putFunction()" >Guardar</button> <a href="/dasboard"> <button>Cerrar</button> </a>' }
 
     </form>
     `
     return html
     
 }
+const putFunction = () => {
+    const name = document.getElementById('name').value
+    const description = document.getElementById('description').value
+    const price = document.getElementById('price').value
+    const image = document.getElementById('image').value
+    
+    console.log(name,description,price,image);
+    
+}
+
+// const saveButton = document.getElementById('saveButton')
+// saveButton.addEventListener('click',putFunction)
+
 
 module.exports = {
     renderProducts,

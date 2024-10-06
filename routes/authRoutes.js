@@ -18,7 +18,7 @@ router.post('/new',authControllers.createProduct)
 router.get('/:productId',ProductsControllers.showProductById) //OK!
 
 // - PUT /dashboard/:productId: Actualiza un producto.
-router.put('/dashboard/:productId',authControllers.updateProduct)
+router.put('/:productId',authControllers.updateProduct)
 
 // - GET /dashboard/:productId/edit: Devuelve el formulario para editar un producto.
 router.get('/:productId/edit',authControllers.showEditProduct) //OK!
