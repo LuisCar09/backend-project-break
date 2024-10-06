@@ -197,7 +197,8 @@ const putFunction = async (idProduct) => {
                 price,
                 image,
                 category,
-                size
+                size,
+                idProduct
             })
         })
         const data = await response.json()
