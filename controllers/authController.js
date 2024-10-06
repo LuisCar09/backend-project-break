@@ -40,11 +40,8 @@ const authDashboardControllers = {
     },
     updateProduct :async(req,res) => {
         const productProperties = req.body
-        
-
         try {
             const product = await Product.findByIdAndUpdate(req.body.idProduct,{...productProperties},{new:true})
-            console.log(product);
             res.status(200).json({success: 'successfully'})
         } catch (error) {
             res
@@ -53,7 +50,17 @@ const authDashboardControllers = {
         }
     },
     deleteProduct :async(req,res) => {
-        res.send('<h1>Luis le Grand Dashboard</h1>')
+        const idProduct = req.body.idProduct
+
+        try {
+            const productDeleted = await Product.findByIdAndDelete(idProduct)
+            console.log(productDeleted);
+            res.status(200).json({success: 'successfully'})
+        } catch (error) {
+            res
+            .status(500)
+            .json({error:error.message})
+        }
     }
 }
 

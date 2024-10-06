@@ -24,7 +24,7 @@ const showButtons = (dashboard,_id) => {
     }
     return `
     <a href="/dashboard/${_id}/edit"><button type="button">Editar</button></a>
-    <a href="/dashboard/${_id}/delete"><button type="button">Borrar</button></a>
+    <button type="button" onClick="deleteFunction('${_id}')" >Borrar</button>
 `
 }
 
@@ -214,7 +214,32 @@ const putFunction = async (idProduct) => {
         console.log('There was a problem sending value to server',error.message)
     }
 }
-
+const deleteFunction = async (idProduct) => {
+    console.log(idProduct);
+    
+    try {
+        const response = await fetch('/dashboard/:productId/delete',{
+            method: 'DELETE',
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify({
+                idProduct
+            })
+        })
+        const data = await response.json()
+        console.log(data);
+        
+        if (data.success) {
+            window.location.href = '/dashboard'
+              
+        }
+        
+    } catch (error) {
+        window.location.href = `/dashboard/${idProduct}/edit`
+        console.log('There was a problem sending value to server',error.message)
+    }
+}
 module.exports = {
     renderProducts,
     navbar,

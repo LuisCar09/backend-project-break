@@ -25,7 +25,7 @@ router.get('/:productId/edit',authControllers.showEditProduct) //OK!
 
 
 // - DELETE /dashboard/:productId/delete: Elimina un producto.
-router.delete('/dashboard/:productId/delete',)
+router.delete('/:productId/delete',authControllers.deleteProduct)
 
 
 module.exports = router
