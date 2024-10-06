@@ -11,14 +11,14 @@ router.get('/new',authControllers.showNewProduct) //OK!
 
 
 // - POST /dashboard: Crea un nuevo producto. OK 
-router.post('/dashboard',authControllers.createProduct)
+router.post('/new',authControllers.createProduct)
 
 
 // - GET /dashboard/:productId: Devuelve el detalle de un producto en el dashboard.
 router.get('/:productId',ProductsControllers.showProductById) //OK!
 
 // - PUT /dashboard/:productId: Actualiza un producto.
-router.put('/dashboard/:productId:',authControllers.updateProduct)
+router.put('/dashboard/:productId',authControllers.updateProduct)
 
 // - GET /dashboard/:productId/edit: Devuelve el formulario para editar un producto.
 router.get('/:productId/edit',authControllers.showEditProduct) //OK!

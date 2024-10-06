@@ -38,18 +38,6 @@ const ProductsControllers = {
             res.status(500).json({'There was a problem creating a product': error.message})
         }
        
-    },
-    createProduct : async(req,res) => {
-    
-        try {
-            const productFeatures = req.body
-            const productCreated = await Product.create(productFeatures)
-            res.status(200).json(productCreated)
-        } catch (error) {
-            res.status(500).json({'There was a problem creating a product': error.message})
-            
-            
-        }
     }
 }
 

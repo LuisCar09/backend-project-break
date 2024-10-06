@@ -114,25 +114,26 @@ const showProducts = (navbar, products) => {
 const comesFromDashboard = (path)=>{
     return path === 'dashboard' ? true : false
 }
-const form = (method)=> {
+const form = (method,editProps)=> {
     const isPost = method === 'POST' ? true : false
+    const existProps = editProps ? true : false
     html = `
-    <form action="" method="${method}">
+    <form action="${isPost ? '/dashboard/new' : '/dashboard/:productId'}" method="${!method ? 'PUT':'POST'}">
         <label for="name">Nombre:</label>
-        <input id="name" name ='name' placeholder="Nombre del producto" type="text" required>
+        <input id="name" name ='name' placeholder="Nombre del producto" type="text" required value='${existProps ? editProps.name : ''}'>
 
         <label for="description">Descripción:</label>
-        <textarea name="description" id="description" placeholder="Descripcion del producto" required></textarea>
+        <textarea name="description" id="description" placeholder="Descripcion del producto" required ' >${existProps ? editProps.description : ''}</textarea>
 
         <label for="price">Precio:</label>
-        <input id="price" name ='price' placeholder="10" type="number" required>
+        <input id="price" name ='price' placeholder="10" type="number" required value='${existProps ? editProps.price : ''}'>
         
         <label for="image">Imagen:</label>
-        <input type="text" id="imagen" name="imagen" >
+        <input type="text" id="imagen" name="image" value='${existProps ? editProps.image : ''}'>
         
 
         <label for="category">Categoría:</label>
-        <select name="category" id="category" required>
+        <select name="category" id="category" required >
             <optgroup label="Categories">
                 <option value="">Selecciona una categoría</option>
                 <option value="Camisetas">Camisetas</option>
@@ -143,7 +144,7 @@ const form = (method)=> {
         </select>
         
         <label for="size">Talla:</label>
-        <select name="size" id="size" required>
+        <select name="size" id="size" required >
             <optgroup label="Sizes">
                 <option value="">Selecciona una talla</option>
                 <option value="S">S</option>
