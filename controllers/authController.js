@@ -27,12 +27,17 @@ const authDashboardControllers = {
     },
     showEditProduct :async(req,res) => {
         
-        const path = req.params.productId.split(':').join('')
+        const productId = req.params.productId
+        const pathOriginal = req.originalUrl.split('/').find(e => e === 'dashboard')
+        const isFromDashboard = comesFromDashboard(pathOriginal)
+        
+        
+        
         
         try {
-            const paraBarbiYAnia = await Product.findById(path)
+            const product = await Product.findById(productId)
             
-            const template = showProducts(navbar(),form('PUT',paraBarbiYAnia))
+            const template = showProducts(navbar(isFromDashboard),form('PUT',product))
             res.send(template)
         } catch (error) {
             res.status(500).json({error: error.message})

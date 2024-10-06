@@ -23,8 +23,8 @@ const showButtons = (dashboard,_id) => {
         return ''
     }
     return `
-    <a href="/dashboard/:${_id}/edit"><button type="button">Editar</button></a>
-    <a href="/dashboard/:${_id}/delete"><button type="button">Borrar</button></a>
+    <a href="/dashboard/${_id}/edit"><button type="button">Editar</button></a>
+    <a href="/dashboard/${_id}/delete"><button type="button">Borrar</button></a>
 `
 }
 
