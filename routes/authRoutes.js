@@ -18,14 +18,16 @@ router.post('/new',authControllers.createProduct)
 router.get('/:productId',ProductsControllers.showProductById) //OK!
 
 // - PUT /dashboard/:productId: Actualiza un producto.
-router.put('/:productId',authControllers.updateProduct)
+router.put('/:productId',authControllers.updateProduct) //OK!
 
 // - GET /dashboard/:productId/edit: Devuelve el formulario para editar un producto.
 router.get('/:productId/edit',authControllers.showEditProduct) //OK!
 
 
 // - DELETE /dashboard/:productId/delete: Elimina un producto.
-router.delete('/:productId/delete',authControllers.deleteProduct)
+router.delete('/:productId/delete',authControllers.deleteProduct) //OK
+
+// - Login
 
 
 module.exports = router

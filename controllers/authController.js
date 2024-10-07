@@ -5,6 +5,10 @@
 // - deleteProduct: Elimina un producto. Una vez eliminado, redirige a la vista de todos los productos del dashboard.
 const { renderProducts, navbar,itemCart,showProducts,comesFromDashboard,form } = require('../public/utils/index')
 const Product = require('../models/Product')
+const path = require('path')
+const admin = require('firebase-admin');
+const e = require('express');
+const auth = admin.auth();
 
 
 const authDashboardControllers = {
@@ -60,6 +64,22 @@ const authDashboardControllers = {
             res
             .status(500)
             .json({error:error.message})
+        }
+    },
+    getRegister: async(req,res)=>{
+        
+        res.sendFile(path.join(__dirname,'../public/views','register.html'))
+    },
+    register : async(req,res) => {
+        try {
+            const {email,password} = req.body
+            await auth.createUser({email,password})
+            res.redirect('/login')
+        } catch (error) {
+            console.log('Error from server: ' + error.message);
+            
+            res.status(401).redirect('/register')
+            
         }
     }
 }

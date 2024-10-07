@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/login.css">
+    <title>Register</title>
+</head>
+<body>
+    <header id="header-top" class='header-top'>
+        <nav>
+        
+            <div>
+                <a href="/">Productos</a>
+            </div>
+            <ul>
+                <li><a href='/dashboard/?category=Camisetas ' > Camisetas</a></li>
+                <li><a href='/dashboard/?category=Pantalones ' > Pantalones</a></li>
+                <li><a href='/dashboard/?category=Zapatos ' > Zapatos</a></li>
+                <li><a href='/dashboard/?category=Accesorios ' > Accesorios</a></li> 
+            </ul>
+            <div>
+                <a href="/login">Login</a>
+            </div>
+        
+        </nav>
+    </header>
+    
+    <main class='main-container'>
+        <div class="contact-container">
+            <h1>Registrarse</h1>
+            <form action="/register" method="post" id="login-form"  class="login-form">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required placeholder="email" autocomplete='true'>
+        
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required autocomplete='true'>
+        
+                <button type="submit">Register</button>
+                <button type="button">Login</button>
+                <button type="button">Atrás</button>
+        
+            </form>
+        </div>
+    </main>
+    <script type="module" src="./utils/login.js"></script>
+</body>
+</html>

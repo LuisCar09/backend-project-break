@@ -72,7 +72,7 @@ const navbar = (isFromDashboard) =>  {
 
     const html = 
     `
-    <navbar>
+    <nav>
             <div>
                 <a href="/">Productos</a>
             </div>
@@ -82,7 +82,7 @@ const navbar = (isFromDashboard) =>  {
             <div>
                 <a href="/login">Login</a>
             </div>
-    </navbar>
+    </nav>
     `
     return html
 }
@@ -96,11 +96,12 @@ const showProducts = (navbar, products) => {
                 <title>Web Store</title>
             </head>
             <body>
-                <main id="main-container" class='main-container'>
                     <header id="header-top" class='header-top'>
                         ${navbar}
                         
                     </header>
+                <main id="main-container" class='main-container'>
+                    
                     <article id="products-container" class='products-container' >
                        ${products}
                     </article>
@@ -129,7 +130,7 @@ const form = (method,editProps)=> {
     const isPost = method === 'POST' ? true : false
     const existProps = editProps ? true : false
     const sizeValues = ["S", "M", "L", "XL", "XXL", "32", "34", "36", "38", "40", "42"];
-    const categoryValues = ["Camisetas", "Pantalones", "Zapatos", "Accesorios"];
+    const categoryValues = ["Camisetas", "Pantalones", "Zapatos", "Accesorios"]; 
     const sizeOptions = !existProps ? renderOptions(existProps,sizeValues) :renderOptions(existProps,sizeValues,editProps.size )
     const categoryOptions =  !existProps ? renderOptions(existProps,categoryValues) : renderOptions(existProps,categoryValues,editProps.category)
     

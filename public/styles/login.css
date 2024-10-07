@@ -77,92 +77,83 @@ html{
     
 }
 
+/* Login */
 
-/* MAIN CONTAINER */
 .main-container{
-
-    height: 100vh;
-    background: #999999;
-}
-.products-container{
-    padding: 2rem;
+    height: calc(100vh - 6rem);
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    gap: 2.6rem;
-}
-
-.product{
+    text-align: center;
     padding: 2rem 1rem;
-    height: 30rem;
-    max-width: 35rem;
+    background-color: #348cb2 ;
+}
+.contact-container {
+    max-width: 34rem;
     width: 100%;
-    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.1);
-    background: grey;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-}
-.product:hover{
-    transform: scale(1.02);
-    transition: all .2s linear;
-}
-.product h2{
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-}
-.product div{
-    padding: 0 2rem;
-    width: 100%;
-}
-.product div:hover{
-    background-color: whitesmoke;
-    transition: all 0.8s linear;
+    justify-content: center;
+    padding: 2.2rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+        0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.product div img{
-    width: 100%;
+.contact-container h1{
+    font-size: 3rem;
     margin-bottom: 2rem;
+    color: #333333;
 }
-.product  a{
-    width: 100%;
-    
-}
-.product button{
-    width: 100%;
-    
-    padding: 1rem;
-    background-color: dodgerblue;
-    border: none;
-    border-radius: .6rem;
-    color: white;
-    font-size: 1.6rem;
-    cursor: pointer;
-}
-.product button:hover{
-    transform: scale(1.02);
-    transition: all .2s linear;
-}
-form{
+ .login-form{
     display: flex;
     flex-direction: column;
-    max-width: 35rem;
     width: 100%;
-    
+    font-size: 2rem;
+    text-align: start;
 }
-form input,form label,form textarea,form select{
-    margin-bottom: 2rem;
+.login-form label {
     
-}
-form label,form button{
     margin-bottom: 1rem;
-    
 }
-form button{
-    width: 100%;
-    
+.login-form input {
+    background-color: #282828;
+    padding: 1rem 0.8rem;
+    outline: none;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 2rem;
+}
+button {
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1.6rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 2rem;
+}
+button[type="submit"] {
+    background-color: #348cb2;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #28738a;
+}
+
+button[type="button"] {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+button[type="button"]:hover {
+    background-color: #ddd;
 }
