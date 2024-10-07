@@ -7,7 +7,6 @@ const { renderProducts, navbar,itemCart,showProducts,comesFromDashboard,form } =
 const Product = require('../models/Product')
 const path = require('path')
 const admin = require('firebase-admin');
-const e = require('express');
 const auth = admin.auth();
 
 
@@ -81,7 +80,24 @@ const authDashboardControllers = {
             res.status(401).redirect('/register')
             
         }
-    }
+    },
+    getLogin:async(req,res)=> {
+        res.sendFile(path.join(__dirname,"../public/views",'login.html'))
+    },
+    postLogin : async(req,res) => {
+        const {idToken} = req.body
+        console.log(idToken);
+        
+        try {
+            await auth.verifyIdToken(idToken)
+            res.cookie('token',idToken,{httpOnly:true,secure:false})
+            res.json({success:true})
+        } catch (error) {
+            console.error('Error auth');
+            res.status(401).json({error:'Invalid token'})
+        }
+    },
+    
 }
 
 module.exports = authDashboardControllers

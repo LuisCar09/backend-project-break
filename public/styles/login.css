@@ -157,3 +157,11 @@ button[type="button"] {
 button[type="button"]:hover {
     background-color: #ddd;
 }
+
+#login{
+    background-color: #348cb2;
+    color: white;
+}
+#login:hover{
+    background-color: #28738a;
+}

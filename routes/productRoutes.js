@@ -13,5 +13,6 @@ router.get('/product/:productId',ProductsControllers.showProductById)
 router.get('/register',authControllers.getRegister)
 router.post('/register',authControllers.register)
 
-
+router.get('/login',authControllers.getLogin)
+router.post('/login',authControllers.postLogin)
 module.exports = router
