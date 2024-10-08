@@ -89,7 +89,7 @@ html{
     background-color: #348cb2 ;
 }
 .contact-container {
-    max-width: 34rem;
+    max-width: 36rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -106,7 +106,17 @@ html{
 .contact-container h1{
     font-size: 3rem;
     margin-bottom: 2rem;
+    color: #348cb2 ;
+}
+.contact-container h3{
+    font-size: 2rem;
+    margin-bottom: 2rem;
     color: #333333;
+}
+.contact-container a{
+    font-weight: 500;
+    color: #016bf8;
+    text-decoration: none;
 }
  .login-form{
     display: flex;
@@ -120,7 +130,6 @@ html{
     margin-bottom: 1rem;
 }
 .login-form input {
-    background-color: #282828;
     padding: 1rem 0.8rem;
     outline: none;
     font-size: 1.6rem;
@@ -129,6 +138,13 @@ html{
     background-color: #f9f9f9;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin-bottom: 2rem;
+}
+input:hover{
+    box-shadow: rgb(232, 237, 235) 0px 0px 0px 3px;
+}
+input:focus{
+    box-shadow: rgb(4, 152, 236) 0px 0px 0px 3px;
+    border-color: rgb(255, 255, 255);
 }
 button {
     padding: 1.5rem 3rem;
@@ -140,6 +156,7 @@ button {
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin-bottom: 2rem;
 }
+
 button[type="submit"] {
     background-color: #348cb2;
     color: white;

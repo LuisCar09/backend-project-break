@@ -86,7 +86,7 @@ const authDashboardControllers = {
     },
     postLogin : async(req,res) => {
         const {idToken} = req.body
-        console.log(idToken);
+        
         
         try {
             await auth.verifyIdToken(idToken)

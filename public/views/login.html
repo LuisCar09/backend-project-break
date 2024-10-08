@@ -28,17 +28,18 @@
     
     <main class='main-container'>
         <div class="contact-container">
-            <h1>Registrarse</h1>
+            <h1>Log in to your account</h1>
+            <h3>Don't have an account? <a href="/register">Sign Up</a> </h3>
             <form action="/register" method="post" id="login-form"  class="login-form">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" required placeholder="email" autocomplete='true'>
         
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" required autocomplete='true'>
+                <input type="password" name="password" id="password" placeholder="**********" required autocomplete='true'>
         
                 
                 <button id="login" class="login" type="button">Login</button>
-                <button id="back" type="button">Atrás</button>
+                <button id="back" type="button">Back</button>
         
             </form>
             <div id="message"></div>
