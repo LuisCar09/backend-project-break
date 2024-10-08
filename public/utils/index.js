@@ -5,7 +5,7 @@ const renderProducts = (products,isFromDashboard) => {
         <div class="product">
                 <h2>${product.name}</h2>
                 <div>
-                    <img src="${product.image}" alt="{product.name}">
+                    <img src="${product.image}" alt="${product.name}">
                 </div>
 
                 <a href="${!isFromDashboard ? `/product/${product._id}` : `/dashboard/${product._id}`}">
@@ -24,7 +24,7 @@ const showButtons = (dashboard,_id) => {
     }
     return `
     <a href="/dashboard/${_id}/edit"><button type="button">Editar</button></a>
-    <button type="button" onClick="deleteFunction('${_id}')" >Borrar</button>
+    <button type="button" onClick="deleteFunction('${_id}')" class="secundary-button" >Borrar</button>
 `
 }
 
@@ -40,16 +40,16 @@ const itemCart = (products,dashboard) => {
                 </div>
 
                 <p>
-                Descripcion:${product.description}
+                <span>Descripcion:</span> ${product.description}
                 </p>
                 <p>
-                Precio:${product.description}
+               <span> Precio:</span> ${product.price}
                 </p>
                 <p>
-                Categoria:${product.category}
+                <span>Categoria:</span> ${product.category}
                 </p>
                 <p>
-                Talla:${product.size}
+                <span>Talla:</span> ${product.size}
                 </p>
 
                 

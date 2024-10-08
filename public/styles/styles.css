@@ -91,28 +91,41 @@ html{
     justify-content: center;
     align-items: center;
     gap: 2.6rem;
+    height: 100%;
 }
 
 .product{
-    padding: 2rem 1rem;
-    max-width: 35rem;
-    width: 100%;
-    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.1);
-    background: grey;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding: 2rem 1rem;
+    max-width: 35rem;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+        0 6px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    color: #348cb2 ;
     cursor: pointer;
+    border-radius: 1rem;
 }
 .product:hover{
     transform: scale(1.02);
-    transition: all .2s linear;
+    transition: all .12s linear;
 }
 .product h2{
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 2rem;
+}
+.product p{
+    color: #333333;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+.product span{
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 .product div{
     padding: 0 2rem;
@@ -135,18 +148,28 @@ html{
 }
 .product button{
     width: 100%;
-    
     padding: 1rem;
     background-color: dodgerblue;
     border: none;
     border-radius: .6rem;
     color: white;
     font-size: 1.6rem;
+    margin-bottom: 1rem;
     cursor: pointer;
+    font-weight: bold;
 }
 .product button:hover{
     transform: scale(1.02);
     transition: all .2s linear;
+}
+.product .secundary-button{
+    background-color: #e0e0e0;
+    color: #333333;
+   
+}
+.product .secundary-button:hover{
+    background-color: #666666;
+    color: #f4f4f4;
 }
 form{
     display: flex;
