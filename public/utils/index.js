@@ -70,6 +70,9 @@ const navbar = (isFromDashboard) =>  {
         return `<li><a href='${!isFromDashboard ? `/?category=${cat}`: `/dashboard/?category=${cat} ` }' > ${cat}</a></li>`
     }).join('')
 
+    const showLoginOrLogout = !isFromDashboard ? '<a href="/login">Login</a>' : '<a onClick="checkOut()">Log out</a>'
+    
+    
     const html = 
     `
     <nav>
@@ -80,7 +83,7 @@ const navbar = (isFromDashboard) =>  {
                ${listItems} 
             </ul>
             <div>
-                <a href="/login">Login</a>
+               ${showLoginOrLogout}
             </div>
     </nav>
     `
@@ -240,6 +243,28 @@ const deleteFunction = async (idProduct) => {
         window.location.href = `/dashboard/${idProduct}/edit`
         console.log('There was a problem sending value to server',error.message)
     }
+}
+
+const checkOut = async() => {
+    
+    try {
+        const response = await fetch ('/logout',{
+            method:'POST',
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body:JSON.stringify({"message":"DELETE"})
+        })
+        
+        const data = await response.json()
+        if (data.success) {
+            window.location.href = '/dashboard'
+        }
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+    
 }
 module.exports = {
     renderProducts,

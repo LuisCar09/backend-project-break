@@ -31,7 +31,7 @@ const loginButton = async() => {
         const userCredential = await signInWithEmailAndPassword(auth,email,password) 
         const idToken = await userCredential.user.getIdToken()
         
-        const response = fetch('/login', {
+        const response = await fetch('/login', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -40,8 +40,8 @@ const loginButton = async() => {
         })
         
         
-        const data = await response
-        if (data.status === 200) {
+        const data = await response.json()
+        if (data.success) {
             window.location.href = '/dashboard'
         }
         
