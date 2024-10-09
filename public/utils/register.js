@@ -36,7 +36,6 @@ const registerWithGoogle = async() => {
 
     } catch (error) {
         console.log(`User not authorized`);
-        console.log(error.code);
         console.log(error.message);
         window.location.href = "/register"
     }

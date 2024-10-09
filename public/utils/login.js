@@ -63,7 +63,7 @@ const logInWithGoogle = async() => {
     try {
         const userCredential = await signInWithPopup(auth,providerGoogle)    
         const idToken = await userCredential.user.getIdToken()
-        console.log(idToken)
+        
 
         const response = await fetch('/login',{
             method:"POST",
@@ -73,7 +73,7 @@ const logInWithGoogle = async() => {
             body:JSON.stringify({idToken})
         })
         const data = await response.json()
-        console.log(data);
+        
         
         if (data.success) {
             window.location.href = '/dashboard'

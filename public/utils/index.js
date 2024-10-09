@@ -221,7 +221,7 @@ const putFunction = async (idProduct) => {
     }
 }
 const deleteFunction = async (idProduct) => {
-    console.log(idProduct);
+    
     
     try {
         const response = await fetch('/dashboard/:productId/delete',{
@@ -234,7 +234,7 @@ const deleteFunction = async (idProduct) => {
             })
         })
         const data = await response.json()
-        console.log(data);
+        
         
         if (data.success) {
             window.location.href = '/dashboard'

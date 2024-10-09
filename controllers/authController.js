@@ -57,7 +57,7 @@ const authDashboardControllers = {
 
         try {
             const productDeleted = await Product.findByIdAndDelete(idProduct)
-            console.log(productDeleted);
+            
             res.status(200).json({success: 'successfully'})
         } catch (error) {
             res
