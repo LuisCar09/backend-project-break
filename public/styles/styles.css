@@ -171,7 +171,7 @@ html{
     background-color: #666666;
     color: #f4f4f4;
 }
-form{
+/* form{
     display: flex;
     flex-direction: column;
     max-width: 35rem;
@@ -188,5 +188,98 @@ form label,form button{
 }
 form button{
     width: 100%;
-    
+}
+     */
+.contact-container {
+    max-width: 36rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+        0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 2rem;
+    text-align: start;
+}
+.login-form label {
+    color: #348cb2 ;
+    margin-bottom: 1rem;
+}
+.login-form input {
+    padding: 1rem 0.8rem;
+    outline: none;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 2rem;
+}
+.login-form textarea {
+    padding: 1rem 0.8rem;
+    outline: none;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 2rem;
+    resize: none; 
+    width: 100%; 
+    height: 150px; 
+}
+.login-form select {
+    padding: 1rem 0.8rem;
+    outline: none;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 2rem;
+    width: 100%; /* Ajusta el ancho al 100% */
+    appearance: none; /* Elimina el estilo predeterminado de algunos navegadores */
+    -webkit-appearance: none; /* Para navegadores webkit como Chrome y Safari */
+    -moz-appearance: none; /* Para Firefox */
+}
+.login-form a button{
+    width: 100%;
+}
+
+input:hover{
+    box-shadow: rgb(232, 237, 235) 0px 0px 0px 3px;
+}
+input:focus{
+    box-shadow: rgb(4, 152, 236) 0px 0px 0px 3px;
+    border-color: rgb(255, 255, 255);
+}
+button {
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1.6rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 2rem;
+}
+#saveButton{
+    background-color: #348cb2;
+    color: white;
+}
+#saveButton:hover{
+    background-color: #28738a;
+}
+.login-form a button:hover{
+    background-color: #ddd;
 }

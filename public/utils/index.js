@@ -138,43 +138,45 @@ const form = (method,editProps)=> {
     const categoryOptions =  !existProps ? renderOptions(existProps,categoryValues) : renderOptions(existProps,categoryValues,editProps.category)
     
     html = `
-    <form action="${isPost ? '/dashboard/new' : ''}" method="${!isPost ? 'PUT':'POST'}">
-        <label for="name">Nombre:</label>
-        <input id="name" name ='name' placeholder="Nombre del producto" type="text" required value='${existProps ? editProps.name : ''}'>
+    <div class="contact-container" >
+        <form action="${isPost ? '/dashboard/new' : ''}" method="${!isPost ? 'PUT':'POST'}" class="login-form" >
+            <label for="name">Nombre:</label>
+            <input id="name" name ='name' placeholder="Nombre del producto" type="text" required value='${existProps ? editProps.name : ''}'>
 
-        <label for="description">Descripción:</label>
-        <textarea name="description" id="description" placeholder="Descripcion del producto" required ' >${existProps ? editProps.description : ''}</textarea>
+            <label for="description">Descripción:</label>
+            <textarea name="description" id="description" placeholder="Descripcion del producto" required ' >${existProps ? editProps.description : ''}</textarea>
 
-        <label for="price">Precio:</label>
-        <input id="price" name ='price' placeholder="10" type="number" required value='${existProps ? editProps.price : ''}'>
-        
-        <label for="image">Imagen:</label>
-        <input type="text" id="image" name="image" value='${existProps ? editProps.image : ''}'>
-        
-
-        <label for="category">Categoría:</label>
-        <select name="category" id="category" required value='${existProps ? editProps.category : ''}' >
-            <optgroup label="Categories">
-                <option value="">Selecciona una categoría</option>
-                ${categoryOptions}
-            </optgroup>
-        </select>
-        
-        <label for="size">Talla:</label>
-        <select name="size" id="size" required required value='${existProps ? editProps.size : ''}' >
-
-            <optgroup label="Sizes">
+            <label for="price">Precio:</label>
+            <input id="price" name ='price' placeholder="10" type="number" required value='${existProps ? editProps.price : ''}'>
             
-                <option value="">Selecciona una talla</option>
-                ${sizeOptions}
-            </optgroup>
-        </select>
+            <label for="image">Imagen:</label>
+            <input type="text" id="image" name="image" value='${existProps ? editProps.image : ''}'>
+            
 
-        ${isPost ? 
-        '<button type="submit">Crear</button>' 
-        : `<button type="button" id="saveButton" onClick="putFunction('${editProps.id}')"> Guardar </button>   <a href="/dasboard"><button type="button" >Cerrar</button> </a>` }
+            <label for="category">Categoría:</label>
+            <select name="category" id="category" required value='${existProps ? editProps.category : ''}' >
+                <optgroup label="Categories">
+                    <option value="">Selecciona una categoría</option>
+                    ${categoryOptions}
+                </optgroup>
+            </select>
+            
+            <label for="size">Talla:</label>
+            <select name="size" id="size" required required value='${existProps ? editProps.size : ''}' >
 
-    </form>
+                <optgroup label="Sizes">
+                
+                    <option value="">Selecciona una talla</option>
+                    ${sizeOptions}
+                </optgroup>
+            </select>
+
+            ${isPost ? 
+            '<button type="submit">Crear</button>' 
+            : `<button type="button" id="saveButton" onClick="putFunction('${editProps.id}')"> Guardar </button>   <a href="/dasboard"><button type="button" >Cerrar</button> </a>` }
+
+        </form>
+    </div>
     `
     return html
     

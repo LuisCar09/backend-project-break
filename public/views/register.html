@@ -30,6 +30,11 @@
         <div class="contact-container">
             <h1>Registrarse</h1>
             <h3>Have an account? <a href="/login">Log in now</a> </h3>
+            <div class="providerAuth">
+                <div id="google" class="providers-logo">
+                    <img src="../images/2993685_brand_brands_google_logo_logos_icon.png"></img>
+                </div>
+            </div>
             <form action="/register" method="post" id="login-form"  class="login-form">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" required placeholder="email" autocomplete='true'>
@@ -44,6 +49,6 @@
             </form>
         </div>
     </main>
-    <script type="module" src="./utils/login.js"></script>
+    <script type="module" src="../utils/register.js"></script>
 </body>
 </html>

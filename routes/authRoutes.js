@@ -7,21 +7,21 @@ const verifyTokenMiddleware = require('../middlewares/authMiddleware')
 router.get('/',verifyTokenMiddleware,ProductsControllers.showProducts) //OK
 
 // - GET /dashboard/new: Devuelve el formulario para subir un artículo nuevo. OK
-router.get('/new',authControllers.showNewProduct) //OK!
+router.get('/new',verifyTokenMiddleware,authControllers.showNewProduct) //OK!
 
 
 // - POST /dashboard: Crea un nuevo producto. OK 
-router.post('/new',authControllers.createProduct)
+router.post('/new',verifyTokenMiddleware,authControllers.createProduct)
 
 
 // - GET /dashboard/:productId: Devuelve el detalle de un producto en el dashboard.
-router.get('/:productId',ProductsControllers.showProductById) //OK!
+router.get('/:productId',verifyTokenMiddleware,ProductsControllers.showProductById) //OK!
 
 // - PUT /dashboard/:productId: Actualiza un producto.
-router.put('/:productId',authControllers.updateProduct) //OK!
+router.put('/:productId',verifyTokenMiddleware,authControllers.updateProduct) //OK!
 
 // - GET /dashboard/:productId/edit: Devuelve el formulario para editar un producto.
-router.get('/:productId/edit',authControllers.showEditProduct) //OK!
+router.get('/:productId/edit',verifyTokenMiddleware,authControllers.showEditProduct) //OK!
 
 
 // - DELETE /dashboard/:productId/delete: Elimina un producto.

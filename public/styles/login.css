@@ -118,6 +118,16 @@ html{
     color: #016bf8;
     text-decoration: none;
 }
+/* providers containers */
+.providerAuth{
+    height: 4rem;
+    width: 100%;
+}
+.providers-logo img{
+    width: 4rem;
+    cursor: pointer;
+}
+
  .login-form{
     display: flex;
     flex-direction: column;

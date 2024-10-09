@@ -10,7 +10,6 @@ const ProductsControllers = {
         const category = req.query.category
         const isFromDashboard = comesFromDashboard(req.originalUrl,'dashboard')
         
-        
         try {
             const products = await Product.find();
             const html = category ? showProducts(navbar(isFromDashboard),renderProducts(products.filter(product => product.category === category),isFromDashboard)) : showProducts(navbar(isFromDashboard),renderProducts(products,isFromDashboard))
