@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider, GithubAuthProvider,FacebookAuthProvider } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCD0EZepPrAb7F0rvWBrLXBv--kfIi9EEs",
@@ -12,10 +12,15 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
-const provider = new GoogleAuthProvider()
+const providerGoogle = new GoogleAuthProvider()
+const providerGitHub = new GithubAuthProvider()
+const providerFacebook = new FacebookAuthProvider()
 const button = document.getElementById('login')
 const googleDiv = document.getElementById('google')
- const messageContainer = document.getElementById('message')
+const gitHubDiv = document.getElementById('github')
+const facebookDiv = document.getElementById('facebook')
+const messageContainer = document.getElementById('message')
+
 const loginButton = async() => {
    
     messageContainer.textContent = ''
@@ -52,11 +57,11 @@ const loginButton = async() => {
     }
 
 }
-const loginWithGoogle = async() => {
+const logInWithGoogle = async() => {
     
     
     try {
-        const userCredential = await signInWithPopup(auth,provider)    
+        const userCredential = await signInWithPopup(auth,providerGoogle)    
         const idToken = await userCredential.user.getIdToken()
         console.log(idToken)
 
@@ -79,8 +84,58 @@ const loginWithGoogle = async() => {
         messageContainer.textContent = 'User not authorized'
     }
 }
+const logInWithGithub =async () => {
+    
+    try {
+        const userCredential = await signInWithPopup(auth,providerGitHub)
+        const idToken = await userCredential.user.getIdToken()
+        const response = await fetch('/login',{
+            method:"POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body:JSON.stringify({idToken})
+        })
+        
+        const data = await response.json()
 
-
+        if (data.success) {
+            window.location.href = './dashboard'
+        }
+        
+    } catch (error) {
+        console.log(error.message);
+        console.error('There was an error loginGitHub user.')
+        messageContainer.textContent = error.message
+    }
+    
+}
+const logInWithFacebook =async () => {
+    
+    try {
+        const userCredential = await signInWithPopup(auth,providerFacebook)
+        const idToken = await userCredential.user.getIdToken()
+        
+    
+        const response = await fetch('/login',{
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+               
+            },
+            body: JSON.stringify({idToken})
+        })
+        const data = await response.json()
+        
+        data.success ? window.location.href = '/dashboard' : null
+        
+    } catch (error) {
+        console.log("There was an error login user.")
+        messageContainer.textContent = 'User not authorized'
+    }
+}
 
 button.addEventListener('click', loginButton)
-googleDiv.addEventListener('click',loginWithGoogle)
+googleDiv.addEventListener('click',logInWithGoogle)
+gitHubDiv.addEventListener('click',logInWithGithub)
+facebookDiv.addEventListener('click',logInWithFacebook)

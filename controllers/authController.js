@@ -87,7 +87,6 @@ const authDashboardControllers = {
     postLogin : async(req,res) => {
         const {idToken} = req.body
         
-        
         try {
             await auth.verifyIdToken(idToken)
             res.cookie('token',idToken,{httpOnly:true,secure:false})
