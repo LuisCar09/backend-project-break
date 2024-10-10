@@ -77,7 +77,7 @@ const navbar = (isFromDashboard) =>  {
     `
     <nav>
             <div>
-                <a href="/">Productos</a>
+                <a href="${!isFromDashboard ? '/' : '/dashboard' } ">Productos</a>
             </div>
             <ul>
                ${listItems} 
@@ -173,7 +173,7 @@ const form = (method,editProps)=> {
 
             ${isPost ? 
             '<button type="submit">Crear</button>' 
-            : `<button type="button" id="saveButton" onClick="putFunction('${editProps.id}')"> Guardar </button>   <a href="/dasboard"><button type="button" >Cerrar</button> </a>` }
+            : `<button type="button" id="saveButton" onClick="putFunction('${editProps.id}')"> Guardar </button>   <a href="/dashboard"><button type="button" >Cerrar</button> </a>` }
 
         </form>
     </div>
