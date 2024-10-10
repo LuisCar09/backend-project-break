@@ -68,10 +68,13 @@ html{
 .header-top nav{
     display: flex;
     align-items: center;
+    
     gap: 4rem;
 }
 .header-top nav ul{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 3rem;
     
@@ -171,25 +174,9 @@ html{
     background-color: #666666;
     color: #f4f4f4;
 }
-/* form{
-    display: flex;
-    flex-direction: column;
-    max-width: 35rem;
-    width: 100%;
-    
-}
-form input,form label,form textarea,form select{
-    margin-bottom: 2rem;
-    
-}
-form label,form button{
-    margin-bottom: 1rem;
-    
-}
-form button{
-    width: 100%;
-}
-     */
+
+
+/* login container */
 .contact-container {
     max-width: 36rem;
     width: 100%;
@@ -282,4 +269,10 @@ button {
 }
 .login-form a button:hover{
     background-color: #ddd;
+}
+
+@media (320px <= width <= 768px) {
+    .main-container{
+        height: 100%;
+    }
 }
