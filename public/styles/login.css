@@ -199,7 +199,7 @@ button[type="button"]:hover {
     background-color: #28738a;
 }
 
-@media (320px <= width <= 768px) {
+@media (320px >= width) {
     .main-container{
         height: calc(100vh - 21rem)
     }
