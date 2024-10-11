@@ -71,7 +71,7 @@ const navbar = (isFromDashboard) =>  {
     }).join('')
 
     const showLoginOrLogout = !isFromDashboard ? '<a href="/login">Log in</a>' : '<a onClick="checkOut()">Log out</a>'
-    
+    const showNewProduct = !isFromDashboard ? '' : '<a href="dashboard/new">New Product</a>'
     
     const html = 
     `
@@ -82,6 +82,9 @@ const navbar = (isFromDashboard) =>  {
             <ul>
                ${listItems} 
             </ul>
+            <div>
+               ${showNewProduct}
+            </div>
             <div>
                ${showLoginOrLogout}
             </div>
