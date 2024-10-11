@@ -83,8 +83,11 @@ html{
 
 /* MAIN CONTAINER */
 .main-container{
-
-    height: calc(100vh - 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 6rem);
+    height: 100%;
     background-color: #348cb2 ;
 }
 .products-container{
@@ -94,7 +97,7 @@ html{
     justify-content: center;
     align-items: center;
     gap: 2.6rem;
-    height: 100%;
+    width: 100%;
 }
 
 .product{
@@ -271,8 +274,8 @@ button {
     background-color: #ddd;
 }
 
- @media (320px <= width <= 768px) {
+ /* @media (320px <= width <= 740px) {
     .main-container{
         height: 100%;
     }
-}
+} */
