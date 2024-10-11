@@ -133,40 +133,40 @@ const form = (method,editProps)=> {
     const isPost = method === 'POST' ? true : false
     const existProps = editProps ? true : false
     const sizeValues = ["S", "M", "L", "XL", "XXL", "32", "34", "36", "38", "40", "42"];
-    const categoryValues = ["Camisetas", "Pantalones", "Zapatos", "Accesorios"]; 
+    const categoryValues = ["T-Shirts", "Pants", "Shoes", "Accessories"]; 
     const sizeOptions = !existProps ? renderOptions(existProps,sizeValues) :renderOptions(existProps,sizeValues,editProps.size )
     const categoryOptions =  !existProps ? renderOptions(existProps,categoryValues) : renderOptions(existProps,categoryValues,editProps.category)
     
     html = `
     <div class="contact-container" >
         <form action="${isPost ? '/dashboard/new' : ''}" method="${!isPost ? 'PUT':'POST'}" class="login-form" >
-            <label for="name">Nombre:</label>
-            <input id="name" name ='name' placeholder="Nombre del producto" type="text" required value='${existProps ? editProps.name : ''}'>
+            <label for="name">Name:</label>
+            <input id="name" name ='name' placeholder="Product name" type="text" required value='${existProps ? editProps.name : ''}'>
 
-            <label for="description">Descripción:</label>
-            <textarea name="description" id="description" placeholder="Descripcion del producto" required ' >${existProps ? editProps.description : ''}</textarea>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" placeholder="Product description." required ' >${existProps ? editProps.description : ''}</textarea>
 
-            <label for="price">Precio:</label>
+            <label for="price">Price:</label>
             <input id="price" name ='price' placeholder="10" type="number" required value='${existProps ? editProps.price : ''}'>
             
-            <label for="image">Imagen:</label>
+            <label for="image">Image:</label>
             <input type="text" id="image" name="image" value='${existProps ? editProps.image : ''}'>
             
 
-            <label for="category">Categoría:</label>
+            <label for="category">Category:</label>
             <select name="category" id="category" required value='${existProps ? editProps.category : ''}' >
                 <optgroup label="Categories">
-                    <option value="">Selecciona una categoría</option>
+                    <option value="">Selecct a category.</option>
                     ${categoryOptions}
                 </optgroup>
             </select>
             
-            <label for="size">Talla:</label>
+            <label for="size">Size:</label>
             <select name="size" id="size" required required value='${existProps ? editProps.size : ''}' >
 
                 <optgroup label="Sizes">
                 
-                    <option value="">Selecciona una talla</option>
+                    <option value="">Select a size.</option>
                     ${sizeOptions}
                 </optgroup>
             </select>

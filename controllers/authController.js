@@ -22,7 +22,7 @@ const authDashboardControllers = {
         try {
             const productFeatures = req.body
             const productCreated = await Product.create(productFeatures)
-            res.status(200).json(productCreated)
+            res.redirect('/dashboard')
         } catch (error) {
             res.status(500).json({'There was a problem creating a product': error.message})
             
