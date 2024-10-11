@@ -30,7 +30,7 @@ const ProductSchema  = new mongoose.Schema({
         type : String,
         required : true,
         enum: {
-            values : ["Camisetas", "Pantalones", "Zapatos", "Accesorios"],
+            values : ["T-Shirts", "Pants", "Shoes", "Accessories"],
             message: '{VALUE} is not a valid product'
         }
     },
