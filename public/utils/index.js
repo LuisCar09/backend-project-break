@@ -9,7 +9,7 @@ const renderProducts = (products,isFromDashboard) => {
                 </div>
 
                 <a href="${!isFromDashboard ? `/product/${product._id}` : `/dashboard/${product._id}`}">
-                    <button>Ver</button>
+                    <button>View</button>
                 </a>
         </div>
         `
@@ -23,8 +23,8 @@ const showButtons = (dashboard,_id) => {
         return ''
     }
     return `
-    <a href="/dashboard/${_id}/edit"><button type="button">Editar</button></a>
-    <button type="button" onClick="deleteFunction('${_id}')" class="secundary-button" >Borrar</button>
+    <a href="/dashboard/${_id}/edit"><button type="button">Edit</button></a>
+    <button type="button" onClick="deleteFunction('${_id}')" class="secundary-button" >Delete</button>
 `
 }
 
