@@ -63,21 +63,21 @@ const itemCart = (products,dashboard) => {
 }
 
 const navbar = (isFromDashboard) =>  {
-    const categories =  ["Camisetas", "Pantalones", "Zapatos", "Accesorios"];
+    const categories =  ["T-Shirts", "Pants", "Shoes", "Accessories"];
     
     const listItems = categories.map(cat => {
         
         return `<li><a href='${!isFromDashboard ? `/?category=${cat}`: `/dashboard/?category=${cat} ` }' > ${cat}</a></li>`
     }).join('')
 
-    const showLoginOrLogout = !isFromDashboard ? '<a href="/login">Login</a>' : '<a onClick="checkOut()">Log out</a>'
+    const showLoginOrLogout = !isFromDashboard ? '<a href="/login">Log in</a>' : '<a onClick="checkOut()">Log out</a>'
     
     
     const html = 
     `
     <nav>
             <div>
-                <a href="${!isFromDashboard ? '/' : '/dashboard' } ">Productos</a>
+                <a href="${!isFromDashboard ? '/' : '/dashboard' } ">Products</a>
             </div>
             <ul>
                ${listItems} 

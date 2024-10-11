@@ -72,6 +72,8 @@ html{
 }
 .header-top nav ul{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 3rem;
     
@@ -122,6 +124,7 @@ html{
 .providerAuth{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 3rem;
     height: 4rem;
     width: 100%;
@@ -194,4 +197,10 @@ button[type="button"]:hover {
 }
 #login:hover{
     background-color: #28738a;
+}
+
+@media (320px <= width <= 768px) {
+    .main-container{
+        height: calc(100vh - 21rem)
+    }
 }

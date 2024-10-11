@@ -72,6 +72,9 @@ const authDashboardControllers = {
     register : async(req,res) => {
         try {
             const {email,password} = req.body
+            if (!email || !password) {
+                res.redirect('/login')
+            }
             await auth.createUser({email,password})
             res.redirect('/login')
         } catch (error) {

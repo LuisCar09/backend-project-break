@@ -271,7 +271,7 @@ button {
     background-color: #ddd;
 }
 
-@media (320px <= width <= 768px) {
+ @media (320px <= width <= 768px) {
     .main-container{
         height: 100%;
     }
