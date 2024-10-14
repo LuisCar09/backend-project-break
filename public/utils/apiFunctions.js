@@ -1,17 +1,17 @@
 const Product = require('../../models/Product')
-const findProductByAny = async (type) => {
-    const findThisProduct = Object.keys(type)[0]?.toLowerCase()
-    const typeOfValues = ["_id", "name", "description", "image", "category", "size", "price"]
+const findProductByAny = async (fieldType) => {
+    const findThisProduct = Object.keys(fieldType)[0]?.toLowerCase()
     const queryValues = {}
-
+    const existThisField = Boolean(await Product.schema.path(findThisProduct))
+    
     try {
-        if (!findThisProduct || !typeOfValues.includes(findThisProduct)) {
+        if (!findThisProduct || !existThisField) {
             return "Invalid product field"
-        }else{
-            queryValues[findThisProduct] = type[findThisProduct]
+        }
+        if (existThisField) {
+            queryValues[findThisProduct] = fieldType[findThisProduct]
             return await Product.findOne(queryValues)
         }
-        
 
     } catch (error) {
         return error.message

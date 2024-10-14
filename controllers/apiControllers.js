@@ -34,6 +34,9 @@ const ApiControllers = {
         const {productId} = req.params
         try {
             
+            if (!productId) {
+                res.status(401).json({error: "Should type a product ID"})
+            }
             
             const products = await Product.findById(productId)
             
