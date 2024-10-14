@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider, GithubAuthProvider,FacebookAuthProvider } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
+
 const firebaseConfig = {
     apiKey: "AIzaSyCD0EZepPrAb7F0rvWBrLXBv--kfIi9EEs",
     authDomain: "web-store-project01.firebaseapp.com",
@@ -29,7 +30,7 @@ const loginButton = async() => {
         const password = document.getElementById('password').value
         
         if (!email || !password) {
-            messageContainer.textContent = 'APRENDE A ESCRIBIR IDIOTA'
+            messageContainer.textContent = 'must cointain email and password'
             return;
         }
         //verificar si el usuario existe en la DB de firebase

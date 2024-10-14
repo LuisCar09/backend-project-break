@@ -12,7 +12,7 @@ const firebaseConfig = {
     appId: "1:785062203003:web:e61383492ab595f2569cde"
 };
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const providerGitHub = new GithubAuthProvider(); 
 const providerFacebook = new FacebookAuthProvider();
@@ -69,7 +69,10 @@ const logInWithGithub = async () => {
         
     } catch (error) {
         
-        console.log(error.code);
+        
+        
+        // console.log(error);
+        
         // if (error.code === 'auth/account-exists-with-different-credential') {
             
         //     console.log(error.customData);

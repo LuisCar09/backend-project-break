@@ -15,7 +15,8 @@ admin.initializeApp({
 
 const app = express()
 const productRoutes= require('./routes/productRoutes')
-const dashboardRouters = require('./routes/authRoutes')
+const dashboardRoutes = require('./routes/authRoutes')
+const apiRoutes = require('./routes/productsApi')
 
 app.use(cors())
 app.use(express.json());
@@ -26,9 +27,9 @@ app.use(express.static(path.join(__dirname,"public")));
 
 app.use('/',productRoutes)
 
-app.use('/dashboard',dashboardRouters)
+app.use('/dashboard',dashboardRoutes)
 
-
+app.use('/apiproducts',apiRoutes)
 
 app.use((req,res)=>{
     res.send('<h1>Page not found</h1>')
