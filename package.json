@@ -32,7 +32,8 @@
     "express": "^4.21.1",
     "firebase": "10.14.0",
     "firebase-admin": "12.6.0",
-    "mongoose": "8.7.0"
+    "mongoose": "8.7.0",
+    "swagger-ui-express": "5.0.1"
   },
   "devDependencies": {
     "jest": "29.7.0"

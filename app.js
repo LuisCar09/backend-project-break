@@ -6,6 +6,8 @@ const admin = require('firebase-admin')
 const dbConnection = require('./config/db')
 const cookieParser = require('cookie-parser');
 const cors = require("cors")
+const swaggerUI = require('swagger-ui-express')
+const docs = require('./data/index')
 dotenv.config()
 const PORT = process.env.PORT ?? 4500
 
@@ -24,6 +26,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser())
 //Read static files
 app.use(express.static(path.join(__dirname,"public")));
+
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs))
 
 app.use('/',productRoutes)
 

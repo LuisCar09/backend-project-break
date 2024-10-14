@@ -10,7 +10,7 @@ const ApiControllers = {
         try {
             const productFeatures = req.body
             const productCreated = await Product.create(productFeatures)
-            res.status(200).json(productCreated)
+            res.status(201).json(productCreated)
         } catch (error) {
             res.status(500).json({'There was a problem creating a product': error.message})
             
@@ -35,7 +35,7 @@ const ApiControllers = {
         try {
             
             if (!productId) {
-                res.status(401).json({error: "Should type a product ID"})
+                res.status(401).json({error: "Should type a product id"})
             }
             
             const products = await Product.findById(productId)
@@ -48,6 +48,9 @@ const ApiControllers = {
     updateById : async (req,res) => {
         const {productId} = req.params
         const apiPassword = req.body.apiKey
+        
+        
+        
         const valuesToChange = req.body
         try {
             
