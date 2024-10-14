@@ -1,14 +1,29 @@
 const Product = require('../models/Product')
 const {findProductByAny} = require('../public/utils/apiFunctions')
+require('dotenv').config()
+const apiKey = process.env.apiModifyKey
+
 
 const ApiControllers = {
+    createProduct : async(req,res) => {
+    
+        try {
+            const productFeatures = req.body
+            const productCreated = await Product.create(productFeatures)
+            res.status(200).json(productCreated)
+        } catch (error) {
+            res.status(500).json({'There was a problem creating a product': error.message})
+            
+            
+        }
+    },
     getProducts : async (req,res) => {
         const queryValue = req.query
         
         const objetGreaterThanZero = Object.keys(queryValue).length === 0 
         try {
             const findByAny = !objetGreaterThanZero ?  await findProductByAny(queryValue) : await Product.find() 
-            //console.log(findByAny);
+           
             
             res.status(200).json(findByAny)
         } catch (error) {
@@ -18,7 +33,7 @@ const ApiControllers = {
     getProductsById : async (req,res) => {
         const {productId} = req.params
         try {
-            console.log(productId);
+            
             
             const products = await Product.findById(productId)
             
@@ -29,17 +44,45 @@ const ApiControllers = {
     },
     updateById : async (req,res) => {
         const {productId} = req.params
+        const apiPassword = req.body.apiKey
+        const valuesToChange = req.body
         try {
-            console.log(productId);
             
-            const products = await Product.findById(productId)
+            if (apiPassword === apiKey ) {
+                
+                const product = await Product.findByIdAndUpdate(productId,{...valuesToChange})
+                
+                
+                res.status(200).json(product)
+            }
             
-            res.status(200).json(products)
+            
+            
         } catch (error) {
             res.status(500).json({error:error.message})
         }
+    },
+    deleteProduct :async(req,res) => {
+        const {productId} = req.params
+        
+        
+        const apiPassword = req.body.apiKey
+        try {
+            
+            if (apiPassword === apiKey ) {
+                
+                const productDeleted = await Product.findByIdAndDelete(productId)
+                
+                
+                res.status(200).json({success: 'delete successfully'})
+            }
+            
+        } catch (error) {
+            res
+            .status(500)
+            .json({error:error.message})
+        }
     }
-    
 }
 
 module.exports = ApiControllers
