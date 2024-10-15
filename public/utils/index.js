@@ -296,5 +296,5 @@ module.exports = {
     showProducts,
     comesFromDashboard,
     form,
-    testLoginFunction
+    
 }
