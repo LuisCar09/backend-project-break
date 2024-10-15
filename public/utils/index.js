@@ -1,3 +1,5 @@
+
+
 const renderProducts = (products,isFromDashboard) => {
     
     const html = products.map(product => {
@@ -271,12 +273,28 @@ const checkOut = async() => {
     }
     
 }
+
+const testLoginFunction = () => {
+    const body= {
+        email : 'nuevoEmail@gmail.com',
+        password : '12345678'
+    }
+    try {
+        const userCredential = signInWithEmailAndPassword(auth,body.email,body.password)
+        const idToken = userCredential.user.getIdToken
+        return idToken
+        
+    } catch (error) {
+        console.log(error.message);
+        
+    }
+}
 module.exports = {
     renderProducts,
     navbar,
     itemCart,
     showProducts,
     comesFromDashboard,
-    form
-
+    form,
+    testLoginFunction
 }

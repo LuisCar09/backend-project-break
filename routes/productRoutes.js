@@ -6,12 +6,12 @@ const authControllers = require('../controllers/authController')
 // - GET /products/:productId: Devuelve el detalle de un producto.
 
 
-router.get('/',ProductsControllers.showProducts)
+router.get('/',ProductsControllers.showProducts) //DONE
 
-router.get('/product/:productId',ProductsControllers.showProductById)
+router.get('/product/:productId',ProductsControllers.showProductById) //DONE
 
-router.get('/register',authControllers.getRegister)
-router.post('/register',authControllers.register)
+router.get('/register',authControllers.getRegister) //DONE
+router.post('/register',authControllers.register) //DONE
 
 router.get('/login',authControllers.getLogin)
 router.post('/login',authControllers.postLogin)
