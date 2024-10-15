@@ -105,9 +105,6 @@ Este proyecto está bajo la **Licencia MIT**. Esto significa que:
 - Se proporciona el software "tal cual", sin garantía de ningún tipo, expresa o implícita.
 
 
-## Bonus 1 - Tests
-
-Para poder comprobar que el controlador de productos funciona correctamente, vamos a crear tests para las funciones. Para ello, necesitaremos instalar el paquete `jest` y crear el archivo `productController.test.js` en la carpeta `test`. En este archivo, importaremos el controlador y crearemos los tests. Podemos hacer tests tanto para las funciones que devuelven html como para las funciones que crean, actualizan o eliminan productos.
 
 
 
